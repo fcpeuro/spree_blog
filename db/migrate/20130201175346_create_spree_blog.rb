@@ -5,13 +5,14 @@ class CreateSpreeBlog < ActiveRecord::Migration
       t.string   "first_name"
       t.string   "last_name"
       t.text     "bio"
+      t.text     "permalink",  null: false
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
     end
 
     create_table "spree_tags" do |t|
       t.string  "name",                           null: false
-      t.string  "slug",                           null: false
+      t.string  "permalink",                      null: false
       t.text    "description"
       t.boolean "trending",       default: false, null: false
     end

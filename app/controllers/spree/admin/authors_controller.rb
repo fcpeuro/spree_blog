@@ -1,8 +1,9 @@
 module Spree
   module Admin
     class AuthorsController < ResourceController
-      def index
-        respond_with(@collection)
+      protected
+      def find_resource
+        Author.find_by_permalink!(params[:id])
       end
     end
   end
