@@ -15,14 +15,16 @@
 <% if @collection.any? %>
 <table class="index sortable" id="listing_authors">
   <colgroup>
-    <col style="width: 33%">
-    <col style="width: 33%;">
-    <col style="width: 33%;">
+    <col style="width: 30%">
+    <col style="width: 30%;">
+    <col style="width: 30%;">
+    <col style="width: 10%;">
   </colgroup>
   <thead>
     <tr id="admin_authors_index_headers">
       <th><%= Spree.t(:first_name) %></th>
       <th><%= Spree.t(:last_name) %></th>
+      <th><%= Spree.t(:permalink) %></th>
       <th></th>
     </tr>
   </thead>
@@ -31,6 +33,7 @@
       <tr id="<%= spree_dom_id author %>">
         <td class="align-center"><%= author.first_name %></td>
         <td class="align-center"><%= author.last_name %></td>
+        <td class="align-center"><%= author.permalink %></td>
         <td class="actions" data-hook="admin_products_index_row_actions">
           <%= link_to_edit author, :no_text => true, :class => 'edit' if can?(:edit, author) %>
           &nbsp;
