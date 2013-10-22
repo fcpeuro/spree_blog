@@ -4,15 +4,17 @@ module Spree
 
 #    has_many :posts, class_name: "Blog::Post", inverse_of: :category
 
-#    validates :name, presence: true
-#    validates :name, uniqueness: true
+    validates :name, :permalink, presence: true
+    validates :name, :permalink, uniqueness: true
 
-#    extend FriendlyId
-#    friendly_id :name, use: :slugged
+    scope :sorted_alphabetically, -> { order('name') }
 
-#    scope :sorted_alphabetically, -> { order('name') }
+    make_permalink order: :name, field: :permalink
 
-    attr_accessible :name, :description
+    attr_accessible :name, :description, :permalink
+
+    def to_param
+      self.permalink.presence || self.name.to_s.to_url
+    end
   end
 end
-
