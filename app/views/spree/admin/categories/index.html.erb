@@ -30,7 +30,7 @@
       <tr id="<%= spree_dom_id category %>">
         <td class="align-center"><%= category.name %></td>
         <td class="align-center"><%= category.permalink %></td>
-        <td class="actions" data-hook="admin_products_index_row_actions">
+        <td class="actions" data-hook="admin_categories_index_row_actions">
           <%= link_to_edit category, :no_text => true, :class => 'edit' if can?(:edit, category) %>
           &nbsp;
           <%= link_to_delete category, :no_text => true if can?(:delete, category) %>
