@@ -7,7 +7,7 @@ class CreateTags < ActiveRecord::Migration
       t.text    "description"
       t.boolean "trending",       default: false, null: false
     end
-    add_index "spree_tags", ["permalink"], name: "index_tags_on_permalink"
+    add_index "spree_tags", ["permalink"], name: "index_spree_tags_on_permalink"
   end
 
 end

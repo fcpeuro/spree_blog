@@ -9,7 +9,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
     end
-    add_index "spree_authors", ["permalink"],         name: "index_authors_on_permalink"
+    add_index "spree_authors", ["permalink"], name: "index_spree_authors_on_permalink"
   end
 
 end
