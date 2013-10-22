@@ -1,13 +1,12 @@
-module Blog
+module Spree
   class Tag < ActiveRecord::Base
-    self.table_name = 'blog_tags'
-
 #    has_many :taggings, class_name: "Blog::Tagging", inverse_of: :tag, dependent: :destroy
 #    has_many :posts, through: :taggings
 
-    validates :name, presence: true
-    validates :name, uniqueness: true
+    validates :name, :permalink, presence: true
+    validates :name, :permalink, uniqueness: true
 
+    make_permalink order: :created_at, field: :permalink
 
     def self.find_or_create!(tag_name)
       Tag.where(name: tag_name).first_or_create
@@ -19,6 +18,10 @@ module Blog
     scope :by_usage, -> { with_posts.select('COUNT(blog_tags.id) AS posts_count').order('posts_count DESC') }
     scope :non_trending, -> { where(trending: false) }
 
-    attr_accessible :name, :trending, :description
+    attr_accessible :name, :trending, :description, :permalink
+
+    def to_param
+      self.permalink.presence || self.name.to_s.to_url
+    end
   end
 end
