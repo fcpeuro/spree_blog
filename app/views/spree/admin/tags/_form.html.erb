@@ -7,7 +7,7 @@
     <% end %>
 
     <%= f.field_container :permalink do %>
-      <%= f.label :permalink, Spree.t(:permalink) %> <span class="required">*</span><br />
+      <%= f.label :permalink, Spree.t(:permalink) %><br />
       <%= f.text_field :permalink, :class => "fullwidth" %>
       <%= f.error_message_on :permalink %>
     <% end %>
