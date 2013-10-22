@@ -13,7 +13,7 @@ module Spree
     end
 
     def to_param
-      self.full_name.to_s.to_url
+      self.permalink.presence || self.full_name.to_s.to_url
     end
 
   end
