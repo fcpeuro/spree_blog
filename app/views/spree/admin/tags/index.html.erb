@@ -32,7 +32,7 @@
       <tr id="<%= spree_dom_id tag %>">
         <td class="align-center"><%= tag.name %></td>
         <td class="align-center"><%= tag.permalink %></td>
-        <td class="align-center"><%= tag.trending ? "Si" : ""%></td>
+        <td class="align-center"><%= tag.trending ? Spree.t(:yes) : "" %></td>
         <td class="actions" data-hook="admin_products_index_row_actions">
           <%= link_to_edit tag, :no_text => true, :class => 'edit' if can?(:edit, tag) %>
           &nbsp;

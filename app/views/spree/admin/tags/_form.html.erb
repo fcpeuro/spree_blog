@@ -11,6 +11,10 @@
       <%= f.text_field :permalink, :class => "fullwidth" %>
       <%= f.error_message_on :permalink %>
     <% end %>
+    <%= f.field_container :trending do %>
+       <%= f.check_box(:trending) %>
+       <%= f.label :trending, Spree.t(:trending)%><br />
+    <% end %>
   </div>
 
   <div class="omega eight columns">
