@@ -1,6 +1,7 @@
 <% content_for :sub_menu do %>
   <ul id="sub_nav" data-hook="admin_post_sub_tabs" class="inline-menu">
     <%= tab :posts,      :match_path => '/posts' %>
+    <%= tab :tags,       :match_path => '/tags' %>
     <%= tab :authors,    :match_path => '/authors' %>
   </ul>
 <% end %>
