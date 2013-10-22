@@ -1,6 +1,6 @@
 module Spree
   class Author < ActiveRecord::Base
-#    has_many :posts, class_name: "Blog::Post", inverse_of: :author
+    has_many :posts, inverse_of: :author
 
     validates :first_name, :last_name, :bio, :permalink, presence: true
     scope :sorted_alphabetically, -> { order('first_name, last_name') }

@@ -2,7 +2,7 @@ module Spree
   class Category < ActiveRecord::Base
 #    self.table_name = 'blog_categories'
 
-#    has_many :posts, class_name: "Blog::Post", inverse_of: :category
+    has_many :posts, inverse_of: :category
 
     validates :name, :permalink, presence: true
     validates :name, :permalink, uniqueness: true
