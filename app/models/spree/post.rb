@@ -21,7 +21,7 @@ module Spree
 
     attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
                     :visible, :published_at, :permalink, :seo_title, :seo_description,
-                    :comma_separated_tags, :related_post_ids
+                    :comma_separated_tags, :related_post_ids, :tag_names
 
     make_permalink order: :published_at, field: :permalink
 
@@ -42,6 +42,17 @@ module Spree
 
     def author_name
       author.full_name
+    end
+
+    def tag_names
+      tags.map(&:name).join(",")
+    end
+
+    def tag_names=(names)
+      ids = names.split(",").map { |name|
+        Spree::Tag.where(permalink: name.to_s.to_url).first_or_create(name: name).id
+      }.uniq.compact
+      self.tag_ids = ids
     end
 
     def to_param
