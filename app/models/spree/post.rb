@@ -3,8 +3,8 @@ module Spree
     belongs_to :category, inverse_of: :posts
     belongs_to :author,   inverse_of: :posts
 
-#    has_many :taggings, class_name: "Blog::Tagging", inverse_of: :post
-#    has_many :tags, through: :taggings
+    has_many :taggings, inverse_of: :post
+    has_many :tags, through: :taggings
 #    has_many :post_relations, class_name: "Blog::PostRelation", inverse_of: :post
 #    has_many :related_posts, through: :post_relations, source: :related
 
