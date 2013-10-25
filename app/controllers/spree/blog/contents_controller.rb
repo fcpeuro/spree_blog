@@ -5,23 +5,23 @@ module Spree
 
       def index
         @title = "Indice dei contenuti"
-        @posts = Spree::Post.order(:published_at).reverse_order.limit(4)
+        @posts = Spree::Post.order(:published_at).reverse_order.visible.limit(4)
         @categories = Spree::Category.order(:name)
-        @tags = Spree::Tag.order(:name)
+        @tags = Spree::Tag.with_posts.sorted_alphabetically
         @authors = Spree::Author.order([:last_name, :first_name])
       end
 
       def show
-        if @post = Spree::Post.find_by_permalink(params[:slug])
+        if @post = Spree::Post.where(permalink: params[:slug]).visible.first
           @title = @post.title
           render 'post'
-        elsif @author = Spree::Author.find_by_permalink(params[:slug])
+        elsif @author = Spree::Author.where(permalink: params[:slug]).first
           @title = @author.full_name
           render 'author'
-        elsif @category = Spree::Category.find_by_permalink(params[:slug])
+        elsif @category = Spree::Category.where(permalink: params[:slug]).first
           @title = @category.name
           render 'category'
-        elsif @tag = Spree::Tag.find_by_permalink(params[:slug])
+        elsif @tag = Spree::Tag.where(permalink: params[:slug]).first
           @title = @tag.name
           render 'tag'
         else
