@@ -1,4 +1,4 @@
-class CreatePostRelations < ActiveRecord::Migration
+class CreateSpreePostRelations < ActiveRecord::Migration
 
   def change
     create_table "spree_post_relations" do |t|

@@ -1,4 +1,4 @@
-class CreatePosts < ActiveRecord::Migration
+class CreateSpreePosts < ActiveRecord::Migration
   def change
     create_table "spree_posts" do |t|
       t.string   "title",                              null: false

@@ -1,4 +1,4 @@
-class CreateTags < ActiveRecord::Migration
+class CreateSpreeTags < ActiveRecord::Migration
 
   def change
     create_table "spree_tags" do |t|

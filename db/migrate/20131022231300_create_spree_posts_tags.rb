@@ -1,4 +1,4 @@
-class CreatePostsTags < ActiveRecord::Migration
+class CreateSpreePostsTags < ActiveRecord::Migration
   def change
     create_table "spree_posts_tags" do |t|
       t.integer  :post_id,        null: false

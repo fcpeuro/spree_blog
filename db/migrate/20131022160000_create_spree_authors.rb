@@ -1,4 +1,4 @@
-class CreateAuthors < ActiveRecord::Migration
+class CreateSpreeAuthors < ActiveRecord::Migration
 
   def change
     create_table "spree_authors" do |t|

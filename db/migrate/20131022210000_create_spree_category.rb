@@ -1,4 +1,4 @@
-class CreateCategory < ActiveRecord::Migration
+class CreateSpreeCategory < ActiveRecord::Migration
 
   def change
     create_table "spree_categories" do |t|
