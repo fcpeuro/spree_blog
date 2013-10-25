@@ -1,7 +1,7 @@
 <h1>Tag <em><%= @tag.name %></em></h1>
 <h3>Elenco articoli</h3>
 <ul>
-  <% @tag.posts.each do |post| %>
+  <% @tag.posts.visible.each do |post| %>
     <li><%= link_to post.title, blog_content_path(post) %></li>
   <% end %>
 </ul>

@@ -16,7 +16,7 @@
 <h3>Related Posts</h3>
 <p>
   <ul>
-    <% @post.related_posts.each do |related_post| %>
+    <% @post.related_posts.visible.each do |related_post| %>
       <li><%= link_to related_post.title, blog_content_path(related_post) %></li>
     <% end %>
   </ul>

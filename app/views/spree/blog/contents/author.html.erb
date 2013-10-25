@@ -3,7 +3,7 @@
 <p><%= @author.bio %></p>
 <h3>Posts List</h3>
 <ul>
-  <% @author.posts.each do |post| %>
+  <% @author.posts.visible.each do |post| %>
     <li><%= link_to post.title, blog_content_path(post) %></li>
   <% end %>
 </ul>
