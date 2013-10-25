@@ -1,9 +1,8 @@
-module Blog
+module Spree
   class PostRelation < ActiveRecord::Base
-    self.table_name = 'blog_post_relations'
 
-    belongs_to :post, class_name: 'Blog::Post'
-    belongs_to :related, class_name: 'Blog::Post'
+    belongs_to :post
+    belongs_to :related, class_name: 'Spree::Post'
 
     validates :post, :related, presence: true
     validates :related_id, uniqueness: { scope: :post_id }

@@ -5,8 +5,8 @@ module Spree
 
     has_many :taggings, inverse_of: :post
     has_many :tags, through: :taggings
-#    has_many :post_relations, class_name: "Blog::PostRelation", inverse_of: :post
-#    has_many :related_posts, through: :post_relations, source: :related
+    has_many :post_relations, inverse_of: :post
+    has_many :related_posts, through: :post_relations, source: :related
 
     validates :title, :body, :category, :author, :published_at, presence: true
 #    validate :check_presence_of_featured_image_if_sticky
