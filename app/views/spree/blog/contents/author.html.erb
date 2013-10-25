@@ -1,10 +1,9 @@
-<% binding.pry %>
-<h1>Autore <em><%= @author.full_name %></em></h1>
-<h3>Biografia</h3>
+<h1>Author <em><%= @author.full_name %></em></h1>
+<h3>Bio</h3>
 <p><%= @author.bio %></p>
-<h3>Elenco articoli</h3>
+<h3>Posts List</h3>
 <ul>
   <% @author.posts.each do |post| %>
-    <li><%= post.title %></li>
+    <li><%= link_to post.title, blog_content_path(post) %></li>
   <% end %>
 </ul>

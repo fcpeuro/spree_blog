@@ -5,6 +5,10 @@ module Spree
 
       def index
         @title = "Indice dei contenuti"
+        @posts = Spree::Post.order(:published_at).reverse_order.limit(4)
+        @categories = Spree::Category.order(:name)
+        @tags = Spree::Tag.order(:name)
+        @authors = Spree::Author.order([:last_name, :first_name])
       end
 
       def show

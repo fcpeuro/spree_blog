@@ -3,3 +3,21 @@
 <p><%= @post.abstract %></p>
 <h3>Body</h3>
 <p><%= @post.body %></p>
+<h3>Author</h3>
+<p><%= link_to @post.author.full_name, blog_content_path(@post.author) %></p>
+<h3>Category</h3>
+<p><%= link_to @post.category.name, blog_content_path(@post.category) %></p>
+<h3>Tags</h3>
+<p>
+  <% @post.tags.each do |tag| %>
+    <%= link_to tag.name, blog_content_path(tag) %>&nbsp;
+  <% end %>
+</p>
+<h3>Related Posts</h3>
+<p>
+  <ul>
+    <% @post.related_posts.each do |related_post| %>
+      <li><%= link_to related_post.title, blog_content_path(related_post) %></li>
+    <% end %>
+  </ul>
+</p>

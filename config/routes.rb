@@ -1,8 +1,8 @@
 Spree::Core::Engine.routes.draw do
 
   namespace :blog do
-    match '/', to: 'contents#index'
-    match '/:slug', to: 'contents#show'
+    match '/', to: 'contents#index', as: 'index'
+    match '/:slug', to: 'contents#show', as: 'content'
   end
 
   namespace :api do
