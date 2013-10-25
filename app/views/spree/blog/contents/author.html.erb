@@ -1,0 +1,10 @@
+<% binding.pry %>
+<h1>Autore <em><%= @author.full_name %></em></h1>
+<h3>Biografia</h3>
+<p><%= @author.bio %></p>
+<h3>Elenco articoli</h3>
+<ul>
+  <% @author.posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>

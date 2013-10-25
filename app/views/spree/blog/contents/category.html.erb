@@ -1,0 +1,7 @@
+<h1>Categoria <em><%= @category.name %></em></h1>
+<h3>Elenco articoli</h3>
+<ul>
+  <% @category.posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>
