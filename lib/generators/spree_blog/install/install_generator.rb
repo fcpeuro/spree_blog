@@ -4,6 +4,10 @@ module SpreeBlog
 
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
+      def add_javascripts
+        append_file "app/assets/javascripts/admin/all.js", "//= require admin/spree_blog\n"
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_blog'
       end
