@@ -1,5 +1,26 @@
 $ ->
   'use strict'
+  if $('#post_related_post_ids').length > 0
+    $('#post_related_post_ids').select2
+      placeholder: 'Related Posts'
+      multiple: true
+      ajax:
+        url: Spree.routes.posts_search
+        datatype: 'json'
+        data: (term, page) ->
+          per_page: 50
+          page: page
+          q:
+            title_cont: term
+        results: (data, page) ->
+          results: data['posts']
+      formatResult: (post) -> post.title
+      formatSelection: (post) -> post.title
+      initSelection: (element, callback) ->
+        url = Spree.url Spree.routes.posts_search, ids: element.val()
+        $.getJSON url, null, (data) ->
+          callback(data['posts'])
+
   if $('#post_tag_names').length > 0
     $('#post_tag_names').select2
       tags: true

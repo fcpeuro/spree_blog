@@ -3,7 +3,11 @@ module Spree
     class PostsController < Spree::Api::BaseController
       respond_to :json
       def index
-        @posts = Post.ransack(params[:q]).result.page(params[:page]).per(params[:per_page])
+        if params[:ids]
+          @posts = Post.find params[:ids].split(',')
+        else
+          @posts = Post.ransack(params[:q]).result.page(params[:page]).per(params[:per_page])
+        end
       end
 
       def show
