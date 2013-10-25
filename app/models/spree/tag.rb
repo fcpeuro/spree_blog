@@ -14,7 +14,7 @@ module Spree
 
     scope :sorted_alphabetically, -> { order('name') }
     scope :trending, -> { where(trending: true) }
-    scope :with_posts, -> { select('blog_tags.*').joins(:posts).group('blog_tags.id').merge(Post.visible) }
+    scope :with_posts, -> { select('spree_tags.*').joins(:posts).group('spree_tags.id').merge(Post.visible) }
     scope :by_usage, -> { with_posts.select('COUNT(blog_tags.id) AS posts_count').order('posts_count DESC') }
     scope :non_trending, -> { where(trending: false) }
 
