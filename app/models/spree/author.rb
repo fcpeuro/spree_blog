@@ -3,6 +3,7 @@ module Spree
     has_many :posts, inverse_of: :author
 
     validates :first_name, :last_name, :bio, :permalink, presence: true
+    validates :permalink, :uniqueness => true
     scope :sorted_alphabetically, -> { order('first_name, last_name') }
     attr_accessible :first_name, :last_name, :permalink, :bio
 
