@@ -5,4 +5,12 @@ FactoryGirl.define do
     bio "Un autore italiano"
 
   end
+
+  factory :tag, class: Spree::Tag do
+    name "Mondiali Calcio"
+    factory :tag_with_description do
+      description "Tutto sui mondiali di calcio"
+    end
+  end
+
 end

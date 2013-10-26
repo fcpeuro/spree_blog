@@ -4,7 +4,7 @@ module Spree
     has_many :posts, through: :taggings
 
     validates :name, :permalink, presence: true
-    validates :name, :permalink, uniqueness: true
+    validates :name, :permalink, uniqueness: { case_sensitive: false }
 
     make_permalink order: :created_at, field: :permalink
 
