@@ -5,7 +5,7 @@ module Spree
     has_many :posts, inverse_of: :category
 
     validates :name, :permalink, presence: true
-    validates :name, :permalink, uniqueness: true
+    validates :name, :permalink, uniqueness: { case_sensitive: false }
 
     scope :sorted_alphabetically, -> { order('name') }
 

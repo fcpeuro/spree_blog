@@ -13,4 +13,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :category, class: Spree::Category do
+    name "Sport"
+    factory :category_with_description do
+      description "Tutto sullo sport"
+    end
+  end
 end
