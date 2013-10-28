@@ -34,10 +34,9 @@ module Spree
     end
 
     def comma_separated_tags=(data)
-      self.tags = []
-      data.split(/\s*,\s*/).each do |tag_name|
-        self.tags << Tag.find_or_create!(tag_name)
-      end
+      self.tags = data.split(',').map do |tag_name|
+        Tag.find_or_create!(tag_name.strip.downcase)
+      end.uniq.compact
     end
 
     def author_name
