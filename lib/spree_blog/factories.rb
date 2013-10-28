@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :blogger_user, parent: :user do
+    spree_roles { [Spree::Role.find_by_name('blogger') || create(:role, name: 'blogger')] }
+  end
 
   factory :author, class: Spree::Author do
     first_name "Eugenio"
@@ -30,6 +33,10 @@ FactoryGirl.define do
     body "Corpo del post"
     published_at Time.now
 
+    factory :post_with_different_name do
+      title Faker::Lorem.sentence
+    end
+
     trait :with_tags do
       ignore do
         tags_count 3
@@ -43,7 +50,7 @@ FactoryGirl.define do
 
     trait :with_related_posts do
       after :create do |post|
-        post.related_posts << create(:post)
+        post.related_posts << create(:post_with_different_name, category: Spree::Category.first)
       end
     end
 

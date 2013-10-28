@@ -56,6 +56,9 @@ Spork.prefork do
   require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
   require 'rspec/rails'
+  Capybara.default_driver = :selenium
+  Capybara.current_driver = :selenium
+#  Capybara.javascript_driver = :selenium
   require 'database_cleaner'
   require 'ffaker'
 
@@ -68,6 +71,7 @@ Spork.prefork do
   require 'spree/testing_support/controller_requests'
   require 'spree/testing_support/authorization_helpers'
   require 'spree/testing_support/url_helpers'
+  require 'spree/testing_support/capybara_ext'
 
   # Requires factories defined in lib/spree_blog/factories.rb
   require 'spree_blog/factories'
