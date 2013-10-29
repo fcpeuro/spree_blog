@@ -9,7 +9,7 @@ module Spree
     has_many :related_posts, through: :post_relations, source: :related
 
     validates :title, :body, :category, :author, :published_at, presence: true
-#    validate :check_presence_of_featured_image_if_sticky
+    validate :check_presence_of_featured_image_if_sticky
 
     scope :sorted_by_date, -> { order('published_at DESC') }
     scope :sticky, -> { where(sticky: true) }
@@ -17,11 +17,20 @@ module Spree
     scope :visible, -> { where(visible: true) }
     scope :published, -> { visible.where('published_at < ?', Time.now) }
 
-#    has_image :featured_image
+    has_attached_file :featured_image,
+      styles: ActiveSupport::JSON.decode(SpreeBlog::Config[:blog_styles]).symbolize_keys!,
+      default_style: SpreeBlog::Config[:blog_default_style],
+      url: SpreeBlog::Config[:blog_url],
+      default_url: SpreeBlog::Config[:blog_default_url],
+      path: SpreeBlog::Config[:blog_path],
+      convert_options: { all: '-strip -auto-orient' }
+
+    include Spree::Core::S3Support
+    supports_s3 :featured_image
 
     attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
                     :visible, :published_at, :permalink, :seo_title, :seo_description,
-                    :comma_separated_tags, :related_post_ids, :tag_names
+                    :comma_separated_tags, :related_post_ids, :tag_names, :featured_image
 
     make_permalink order: :published_at, field: :permalink
 
@@ -60,10 +69,10 @@ module Spree
 
     private
 
-#    def check_presence_of_featured_image_if_sticky
-#      if self.sticky && self.featured_image.nil?
-#        errors.add(:sticky, "richiede la presenza di una featured image")
-#      end
-#    end
+    def check_presence_of_featured_image_if_sticky
+      if self.sticky && !self.featured_image.present?
+        errors.add(:sticky, "richiede la presenza di una featured image")
+      end
+    end
   end
 end

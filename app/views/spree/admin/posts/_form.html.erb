@@ -47,6 +47,19 @@
         <% end %>
       </div>
     </div>
+    <div class="row">
+      <div class="alpha four columns">
+        <%= f.field_container :featured_image do %>
+          <%= f.label :featured_image, Spree.t(:featured_image) %>
+          <%= f.file_field :featured_image %>
+        <% end %>
+      </div>
+      <div class="omega four columns">
+        <% if @post.featured_image.exists? %>
+          <%= image_tag @post.featured_image.url(:thumb) %>
+        <% end %>
+      </div>
+    </div>
     <%= f.field_container :published_at do %>
       <%= f.label :published_at, Spree.t(:published_at) %>
       <%= f.error_message_on :published_at %>
