@@ -16,5 +16,17 @@ module Spree
     def to_param
       self.permalink.presence || self.name.to_s.to_url
     end
+
+    def seo_slug
+      self.permalink
+    end
+
+    def seo_title
+      self.name
+    end
+
+    def seo_description
+      self.description
+    end
   end
 end

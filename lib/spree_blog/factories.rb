@@ -6,7 +6,8 @@ FactoryGirl.define do
   factory :author, class: Spree::Author do
     first_name "Eugenio"
     last_name "Montale"
-    bio { Faker::Lorem.paragraph }
+    bio Faker::Lorem.paragraph
+    seo_description Faker::Lorem.paragraph
   end
 
   factory :tag, class: Spree::Tag do

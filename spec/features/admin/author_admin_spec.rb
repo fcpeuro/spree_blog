@@ -20,9 +20,10 @@ describe "Author Admin" do
     context "creating an author" do
       it "should create a new author" do
         click_link "New Author"
-        fill_in 'author_first_name', :with => Faker::Name.first_name
-        fill_in 'author_last_name',  :with => Faker::Name.last_name
-        fill_in 'author_bio',        :with => Faker::Lorem.paragraph
+        fill_in 'author_first_name',      :with => Faker::Name.first_name
+        fill_in 'author_last_name',       :with => Faker::Name.last_name
+        fill_in 'author_bio',             :with => Faker::Lorem.paragraph
+        fill_in 'author_seo_description', :with => Faker::Lorem.paragraph
         click_button 'Create'
         expect(page).to have_content('successfully created!')
       end

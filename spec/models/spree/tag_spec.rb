@@ -24,4 +24,29 @@ describe Spree::Tag do
       expect(tag.permalink).to eq(tag.name.to_s.to_url)
     end
   end
+
+  context "Seo Fields" do
+    let(:tag) { create :tag }
+    context "Seo Slug" do
+      it "should have a seo_slug" do
+        expect(tag).to respond_to(:seo_slug)
+      end
+      it "should be the same as permalink" do
+        expect(tag.seo_slug).to eq(tag.permalink)
+      end
+    end
+    context "Seo Description" do
+      it "should have a seo_description" do
+        expect(tag).to respond_to(:seo_description)
+      end
+    end
+    context "Seo Title" do
+      it "should have a seo_title" do
+        expect(tag).to respond_to(:seo_title)
+      end
+      it "should contain the name" do
+        expect(tag.seo_title).to match(Regexp.new(tag.name))
+      end
+    end
+  end
 end

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Spree::Author do
-
-
   context "validation" do
     let(:author) { build :author }
 
@@ -22,6 +20,11 @@ describe Spree::Author do
 
     it "should not be valid without bio" do
       author.bio = nil
+      expect(author).not_to be_valid
+    end
+
+    it "should not be valid withoud seo_description" do
+      author.seo_description = nil
       expect(author).not_to be_valid
     end
 
@@ -45,6 +48,31 @@ describe Spree::Author do
       it "should be updated" do
         author.update_attributes(permalink: "luigi-pirandello")
         expect(author.permalink).to eq("luigi-pirandello")
+      end
+    end
+  end
+
+  context "Seo Fields" do
+    let(:author) { create :author }
+    context "Seo Slug" do
+      it "should have a seo_slug" do
+        expect(author).to respond_to(:seo_slug)
+      end
+      it "should be the same as permalink" do
+        expect(author.seo_slug).to eq(author.permalink)
+      end
+    end
+    context "Seo Description" do
+      it "should have a seo_description" do
+        expect(author).to respond_to(:seo_description)
+      end
+    end
+    context "Seo Title" do
+      it "should have a seo_title" do
+        expect(author).to respond_to(:seo_title)
+      end
+      it "should contain the full name" do
+        expect(author.seo_title).to match(Regexp.new(author.full_name))
       end
     end
   end
