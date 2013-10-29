@@ -1,5 +1,5 @@
+#= require admin/spree_backend
 $ ->
-  'use strict'
   if $('#post_related_post_ids').length > 0
     $('#post_related_post_ids').select2
       placeholder: 'Related Posts'
