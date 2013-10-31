@@ -1,9 +1,11 @@
 module Spree
   module Blog
     class ContentsController < BaseController
+      include Spree::Core::ControllerHelpers::Order
       layout 'spree/layouts/spree_blog'
 
       def index
+        @order = current_order
         @title = "Indice dei contenuti"
         @posts = Spree::Post.order(:published_at).reverse_order.visible.limit(4)
         @categories = Spree::Category.order(:name)
