@@ -4,13 +4,12 @@ module Spree
       include Spree::Core::ControllerHelpers::Order
       layout 'spree/layouts/spree_blog'
 
+      before_filter :load_blog_data
+
       def index
         @order = current_order
         @title = "Indice dei contenuti"
         @posts = Spree::Post.order(:published_at).reverse_order.visible.limit(4)
-        @categories = Spree::Category.order(:name)
-        @tags = Spree::Tag.with_posts.sorted_alphabetically
-        @authors = Spree::Author.order([:last_name, :first_name])
       end
 
       def show
@@ -31,6 +30,12 @@ module Spree
         end
       end
 
+      protected
+      def load_blog_data
+        @categories = Spree::Category.order(:name)
+        @tags = Spree::Tag.with_posts.sorted_alphabetically
+        @authors = Spree::Author.order([:last_name, :first_name])
+      end
     end
   end
 end
