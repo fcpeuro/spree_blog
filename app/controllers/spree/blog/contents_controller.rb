@@ -13,17 +13,17 @@ module Spree
       end
 
       def show
-        if @post = Spree::Post.where(permalink: params[:slug]).visible.first
-          @title = @post.title
+        if @object = Spree::Post.where(permalink: params[:slug]).visible.first
+          @title = @object.title
           render 'post'
-        elsif @author = Spree::Author.where(permalink: params[:slug]).first
-          @title = @author.full_name
+        elsif @object = Spree::Author.where(permalink: params[:slug]).first
+          @title = @object.full_name
           render 'author'
-        elsif @category = Spree::Category.where(permalink: params[:slug]).first
-          @title = @category.name
+        elsif @object = Spree::Category.where(permalink: params[:slug]).first
+          @title = @object.name
           render 'category'
-        elsif @tag = Spree::Tag.where(permalink: params[:slug]).first
-          @title = @tag.name
+        elsif @object = Spree::Tag.where(permalink: params[:slug]).first
+          @title = @object.name
           render 'tag'
         else
           render_404
