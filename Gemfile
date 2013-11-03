@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-0-stable'
 
 group :development, :test do
-  gem 'spork'
   gem 'pry-debugger'
   gem 'factory_girl'
   gem 'factory_girl_rails'
