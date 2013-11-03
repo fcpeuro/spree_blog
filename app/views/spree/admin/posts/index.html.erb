@@ -31,7 +31,7 @@
     <% @collection.each do |post| %>
       <tr id="<%= spree_dom_id post %>">
         <td class="align-center"><%= post.title %></td>
-        <td class="align-center"><%= post.permalink %></td>
+        <td class="align-center"><%= post.author.full_name %></td>
         <td class="align-center"><%= post.visible ? Spree.t(:yes) : "" %></td>
         <td class="actions" data-hook="admin_posts_index_row_actions">
           <%= link_to_edit post, :no_text => true, :class => 'edit' if can?(:edit, post) %>
