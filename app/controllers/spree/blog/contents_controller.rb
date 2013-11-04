@@ -9,7 +9,8 @@ module Spree
       def index
         @order = current_order
         @title = "Indice dei contenuti"
-        @posts = Spree::Post.order(:published_at).reverse_order.visible.limit(4)
+        @posts_searcher = build_posts_searcher params
+        @posts = @posts_searcher.retrieve_posts
       end
 
       def show
@@ -28,6 +29,9 @@ module Spree
         else
           render_404
         end
+      end
+
+      def search
       end
 
       protected

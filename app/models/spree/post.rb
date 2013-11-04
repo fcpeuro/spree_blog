@@ -16,6 +16,7 @@ module Spree
     scope :matching_query, ->(query) { where("title LIKE :query OR body LIKE :query", query: "%#{query}%") }
     scope :visible, -> { where(visible: true) }
     scope :published, -> { visible.where('published_at < ?', Time.now) }
+    scope :active, -> { visible.published }
 
     has_attached_file :featured_image,
       styles: ActiveSupport::JSON.decode(SpreeBlog::Config[:blog_styles]).symbolize_keys!,
@@ -74,5 +75,14 @@ module Spree
         errors.add(:sticky, "richiede la presenza di una featured image")
       end
     end
+
+    def self.like_any(fields, values)
+      where fields.map { |field|
+        values.map { |value|
+          arel_table[field].matches("%#{value}%")
+        }.inject(:or)
+      }.inject(:or)
+    end
+
   end
 end
