@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Post Admin" do
+describe "Posts Admin" do
 
   context 'as admin user' do
     stub_authorization!

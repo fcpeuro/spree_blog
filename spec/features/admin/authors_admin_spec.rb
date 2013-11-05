@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Author Admin" do
+describe "Authors Admin" do
 
   context 'as admin user' do
     stub_authorization!
