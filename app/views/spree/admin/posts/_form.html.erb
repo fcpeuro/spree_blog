@@ -18,29 +18,23 @@
       <%= f.error_message_on :seo_title %>
     <% end %>
     <div class="row">
-      <div class="alpha columns four">
+      <div class="alpha columns six">
         <%= f.field_container :authors do %>
           <%= f.label :author_id, Spree.t(:authors) %>
           <%= f.collection_select(:author_id, @authors, :id, :full_name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
           <%= f.error_message_on :author %>
         <% end %>
-      </div>
-      <div class="omega columns four">
         <%= f.field_container :categories do %>
           <%= f.label :category_id, Spree.t(:categories) %>
           <%= f.collection_select(:category_id, @categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
           <%= f.error_message_on :category %>
         <% end %>
       </div>
-    </div>
-    <div class="row">
-      <div class="alpha four columns">
+      <div class="omega columns two">
         <%= f.field_container :sticky do %>
            <%= f.check_box(:sticky) %>
            <%= f.label :sticky, Spree.t(:sticky)%><br />
         <% end %>
-      </div>
-      <div class="omega four columns">
         <%= f.field_container :visible do %>
           <%= f.check_box(:visible) %>
           <%= f.label :visible, Spree.t(:visible)%><br />
@@ -84,12 +78,12 @@
     <% end %>
     <%= f.field_container :abstract do %>
       <%= f.label :abstract, Spree.t(:abstract) %><br />
-      <%= f.text_area :abstract, :rows => 5, :class => 'fullwidth' %>
+      <%= f.text_area :abstract, :rows => 20, :class => 'fullwidth' %>
     <% end %>
 
     <%= f.field_container :body do %>
       <%= f.label :body, Spree.t(:body) %> <span class="required">*</span><br />
-      <%= f.text_area :body, :rows => 5, :class => 'fullwidth' %>
+      <%= f.text_area :body, :rows => 20, :class => 'fullwidth' %>
     <% end %>
 
   </div>
