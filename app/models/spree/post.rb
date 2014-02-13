@@ -2,6 +2,7 @@ module Spree
   class Post < ActiveRecord::Base
     belongs_to :category, inverse_of: :posts
     belongs_to :author,   inverse_of: :posts
+    belongs_to :product
 
     has_many :taggings, inverse_of: :post
     has_many :tags, through: :taggings
@@ -31,7 +32,8 @@ module Spree
 
     attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
                     :visible, :published_at, :permalink, :seo_title, :seo_description,
-                    :comma_separated_tags, :related_post_ids, :tag_names, :featured_image
+                    :comma_separated_tags, :related_post_ids, :tag_names, :featured_image,
+                    :product_id
 
     make_permalink order: :published_at, field: :permalink
 

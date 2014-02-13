@@ -70,6 +70,11 @@
       <%= f.hidden_field :related_post_ids, :value => @post.related_post_ids.join(",") %>
     <% end %>
 
+    <%= f.field_container :product do %>
+      <%= f.label :product_id, Spree.t(:product) %>
+      <%= f.collection_select(:product_id, @products, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
+      <%= f.error_message_on :product %>
+    <% end %>
   </div>
   <div class="omega eight columns">
     <%= f.field_container :seo_description do %>

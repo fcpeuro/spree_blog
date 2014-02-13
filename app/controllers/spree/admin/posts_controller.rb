@@ -16,6 +16,7 @@ module Spree
       def load_data
         @authors = Spree::Author.order(:last_name)
         @categories = Spree::Category.order(:name)
+        @products = Spree::Product.order(:name)
       end
 
       def find_resource
