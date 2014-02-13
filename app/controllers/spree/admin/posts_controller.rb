@@ -16,7 +16,13 @@ module Spree
       def load_data
         @authors = Spree::Author.order(:last_name)
         @categories = Spree::Category.order(:name)
-        @products = Spree::Product.order(:name)
+        @variants = Spree::Product.order(:name).active.map do |p|
+          if p.has_variants?
+            p.variants
+          else
+            p.master
+          end
+        end.flatten
       end
 
       def find_resource
