@@ -75,6 +75,13 @@
       <%= f.select(:variant_id, options_for_select(@variants.map { |v| ["#{v.name} #{v.options_text}", v.id] }, @object.variant_id), {include_blank: Spree.t('match_choices.none')}, {class: 'select2'}) %>
       <%= f.error_message_on :variant %>
     <% end %>
+
+    <%= f.field_container :product_label do %>
+      <%= f.label :product_label, Spree.t(:product_label) %><br />
+      <%= f.text_field :product_label, :class => "fullwidth" %>
+      <%= f.error_message_on :product_label %>
+    <% end %>
+
   </div>
   <div class="omega eight columns">
     <%= f.field_container :seo_description do %>

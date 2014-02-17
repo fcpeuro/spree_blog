@@ -33,7 +33,7 @@ module Spree
     attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
                     :visible, :published_at, :permalink, :seo_title, :seo_description,
                     :comma_separated_tags, :related_post_ids, :tag_names, :featured_image,
-                    :variant_id
+                    :variant_id, :product_label
 
     make_permalink order: :published_at, field: :permalink
 
