@@ -12,6 +12,8 @@ module Spree
     validates :title, :body, :category, :author, :published_at, presence: true
     validate :check_presence_of_featured_image_if_sticky
 
+    validate :check_presence_of_label_if_product_associated
+
     scope :sorted_by_date, -> { order('published_at DESC') }
     scope :sticky, -> { where(sticky: true) }
     scope :matching_query, ->(query) { where("title LIKE :query OR body LIKE :query", query: "%#{query}%") }
@@ -75,6 +77,12 @@ module Spree
     def check_presence_of_featured_image_if_sticky
       if self.sticky && !self.featured_image.present?
         errors.add(:sticky, "richiede la presenza di una featured image")
+      end
+    end
+
+    def check_presence_of_label_if_product_associated
+      if self.variant.present? && self.product_label.blank?
+        errors.add(:product_label, "il prodotto associato richiede la presenza di un'etichetta")
       end
     end
 
