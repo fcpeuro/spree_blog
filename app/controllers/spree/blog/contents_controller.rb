@@ -10,7 +10,7 @@ module Spree
         @order = current_order
         @title = "Indice dei contenuti"
         @posts_searcher = build_posts_searcher params
-        @posts = @posts_searcher.retrieve_posts.order(:published_at).reverse_order
+        @posts = @posts_searcher.retrieve_posts.order(:published_at)
       end
 
       def show
