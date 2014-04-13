@@ -1,8 +1,6 @@
 module Spree
   class Category < ActiveRecord::Base
-#    self.table_name = 'blog_categories'
-
-    has_many :posts, inverse_of: :category
+    has_many :posts, inverse_of: :category, order: "published_at DESC"
 
     validates :name, :permalink, presence: true
     validates :name, :permalink, uniqueness: { case_sensitive: false }

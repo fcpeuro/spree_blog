@@ -1,7 +1,7 @@
 module Spree
   class Tag < ActiveRecord::Base
     has_many :taggings, inverse_of: :tag, dependent: :destroy
-    has_many :posts, through: :taggings
+    has_many :posts, through: :taggings, order: 'published_at DESC'
 
     validates :name, :permalink, presence: true
     validates :name, :permalink, uniqueness: { case_sensitive: false }

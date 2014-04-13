@@ -1,6 +1,6 @@
 module Spree
   class Author < ActiveRecord::Base
-    has_many :posts, inverse_of: :author
+    has_many :posts, inverse_of: :author, order: 'published_at DESC'
 
     validates :first_name, :last_name, :bio, :permalink, :seo_description, presence: true
     validates :permalink, :uniqueness => true
