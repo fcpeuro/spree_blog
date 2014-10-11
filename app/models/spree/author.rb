@@ -1,11 +1,10 @@
 module Spree
   class Author < ActiveRecord::Base
-    has_many :posts, inverse_of: :author, order: 'published_at DESC'
+    has_many :posts, -> { order(published_at: :desc) },  inverse_of: :author
 
-    validates :first_name, :last_name, :bio, :permalink, :seo_description, presence: true
+    validates :first_name, :last_name, :permalink, :seo_description, presence: true
     validates :permalink, :uniqueness => true
     scope :sorted_alphabetically, -> { order('first_name, last_name') }
-    attr_accessible :first_name, :last_name, :permalink, :bio, :seo_description
 
     make_permalink order: :first_name, field: :permalink
 

@@ -1,0 +1,3 @@
+<% if Spree.user_class && can?(:admin, Spree::Post) %>
+  <%= tab(:posts, :url => spree.admin_posts_path, :icon => 'user') %>
+<% end %>

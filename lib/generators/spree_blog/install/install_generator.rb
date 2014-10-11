@@ -5,11 +5,7 @@ module SpreeBlog
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
       def add_javascripts
-        append_file "app/assets/javascripts/admin/all.js", "//= require admin/spree_blog\n"
-      end
-
-      def add_seeds
-        append_to_file 'db/seeds.rb', 'Spree::Blog::Engine.load_seed if defined?(Spree::Blog)'
+        append_file "vendor/assets/javascripts/spree/backend/all.js", "//= require spree/backend/spree_blog\n"
       end
 
       def add_migrations

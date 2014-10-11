@@ -5,9 +5,9 @@ module Spree
     belongs_to :variant
 
     has_many :taggings, inverse_of: :post
-    has_many :tags, through: :taggings
+    has_many :tags, -> { order(:name) }, through: :taggings
     has_many :post_relations, inverse_of: :post
-    has_many :related_posts, through: :post_relations, source: :related
+    has_many :related_posts, -> { order(published_at: :desc) }, through: :post_relations, source: :related
 
     validates :title, :body, :category, :author, :published_at, presence: true
     validate :check_presence_of_featured_image_if_sticky
@@ -28,14 +28,6 @@ module Spree
       default_url: SpreeBlog::Config[:blog_default_url],
       path: SpreeBlog::Config[:blog_path],
       convert_options: { all: '-strip -auto-orient' }
-
-    include Spree::Core::S3Support
-    supports_s3 :featured_image
-
-    attr_accessible :category_id, :author_id, :title, :abstract, :body, :sticky,
-                    :visible, :published_at, :permalink, :seo_title, :seo_description,
-                    :comma_separated_tags, :related_post_ids, :tag_names, :featured_image,
-                    :variant_id, :product_label
 
     make_permalink order: :published_at, field: :permalink
 
