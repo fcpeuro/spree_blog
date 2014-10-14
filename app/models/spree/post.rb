@@ -13,6 +13,7 @@ module Spree
     validate :check_presence_of_featured_image_if_sticky
 
     validate :check_presence_of_label_if_product_associated
+    validates_attachment_content_type :featuted_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
     scope :sorted_by_date, -> { order('published_at DESC') }
     scope :sticky, -> { where(sticky: true) }
