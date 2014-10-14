@@ -13,7 +13,6 @@ module Spree
     validate :check_presence_of_featured_image_if_sticky
 
     validate :check_presence_of_label_if_product_associated
-    validates_attachment_content_type :featuted_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
     scope :sorted_by_date, -> { order('published_at DESC') }
     scope :sticky, -> { where(sticky: true) }
@@ -29,6 +28,8 @@ module Spree
       default_url: SpreeBlog::Config[:blog_default_url],
       path: SpreeBlog::Config[:blog_path],
       convert_options: { all: '-strip -auto-orient' }
+
+    validates_attachment :featured_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
     make_permalink order: :published_at, field: :permalink
 
