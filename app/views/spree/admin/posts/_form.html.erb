@@ -2,36 +2,36 @@
   <div class="row">
     <div class="alpha eight columns">
       <%= f.field_container :title do %>
-        <%= f.label :title, Spree.t(:title) %> <span class="required">*</span><br />
+        <%= f.label :title, Spree.t(:title, scope: :blog) %> <span class="required">*</span><br />
         <%= f.text_field :title, :class => "fullwidth" %>
         <%= f.error_message_on :title %>
       <% end %>
 
       <%= f.field_container :permalink do %>
-        <%= f.label :permalink, Spree.t(:permalink) %><br />
+        <%= f.label :permalink, Spree.t(:permalink, scope: :blog) %><br />
         <%= f.text_field :permalink, :class => "fullwidth" %>
         <%= f.error_message_on :permalink %>
       <% end %>
 
       <%= f.field_container :seo_title do %>
-        <%= f.label :seo_title, Spree.t(:seo_title) %><br />
+        <%= f.label :seo_title, Spree.t(:seo_title, scope: :blog) %><br />
         <%= f.text_field :seo_title, :class => "fullwidth" %>
         <%= f.error_message_on :seo_title %>
       <% end %>
     </div>
     <div class="omega eight columns">
       <%= f.field_container :author_id do %>
-        <%= f.label :author_id, Spree.t(:author) %><br />
+        <%= f.label :author_id, Spree.t(:author, scope: :blog) %><br />
         <%= f.collection_select(:author_id, @authors, :id, :full_name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2 fullwidth' }) %>
         <%= f.error_message_on :author %>
       <% end %>
       <%= f.field_container :category_id do %>
-        <%= f.label :category_id, Spree.t(:category) %><br />
+        <%= f.label :category_id, Spree.t(:category, scope: :blog) %><br />
         <%= f.collection_select(:category_id, @categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2 fullwidth' }) %>
         <%= f.error_message_on :category %>
       <% end %>
       <%= f.field_container :seo_description do %>
-        <%= f.label :seo_scription, Spree.t(:seo_description) %><br />
+        <%= f.label :seo_scription, Spree.t(:seo_description, scope: :blog) %><br />
         <%= f.text_area :seo_description, :rows => 1, :class => 'fullwidth' %>
       <% end %>
     </div>
@@ -39,12 +39,12 @@
 
   <div class="row">
     <%= f.field_container :abstract do %>
-      <%= f.label :abstract, Spree.t(:abstract) %><br />
+      <%= f.label :abstract, Spree.t(:abstract, scope: :blog) %><br />
       <%= f.text_area :abstract, :rows => 20, :class => 'fullwidth' %>
     <% end %>
 
     <%= f.field_container :body do %>
-      <%= f.label :body, Spree.t(:body) %> <span class="required">*</span><br />
+      <%= f.label :body, Spree.t(:body, scope: :blog) %> <span class="required">*</span><br />
       <%= f.text_area :body, :rows => 20, :class => 'fullwidth' %>
     <% end %>
   </div>
@@ -52,23 +52,23 @@
   <div class="row">
     <div class="alpha four columns">
       <%= f.field_container :published_at do %>
-        <%= f.label :published_at, Spree.t(:published_at) %>
+        <%= f.label :published_at, Spree.t(:published_at, scope: :blog) %>
         <%= f.error_message_on :published_at %>
         <%= f.text_field :published_at, :value => datepicker_field_value(@post.published_at), :class => 'datepicker' %>
       <% end %>
       <%= f.field_container :visible do %>
         <%= f.check_box(:visible) %>
-        <%= f.label :visible, Spree.t(:visible)%><br />
+        <%= f.label :visible, Spree.t(:visible, scope: :blog) %><br />
       <% end %>
     </div>
     <div class="alpha four columns">
       <%= f.field_container :featured_image do %>
-        <%= f.label :featured_image, Spree.t(:featured_image) %>
+        <%= f.label :featured_image, Spree.t(:featured_image, scope: :blog) %>
         <%= f.file_field :featured_image %>
       <% end %>
       <%= f.field_container :sticky do %>
          <%= f.check_box(:sticky) %>
-         <%= f.label :sticky, Spree.t(:sticky)%><br />
+         <%= f.label :sticky, Spree.t(:sticky, scope: :blog) %><br />
       <% end %>
     </div>
     <div class="alpha four columns">
@@ -79,13 +79,13 @@
 
     <div class="omega four columns">
       <%= f.field_container :variant_sku do %>
-        <%= f.label :variant_sku, Spree.t(:variant_sku) %><br />
+        <%= f.label :variant_sku, Spree.t(:variant_sku, scope: :blog) %><br />
         <%= f.text_field :variant_sku, :class => "fullwidth" %>
         <%= f.error_message_on :variant_sku %>
       <% end %>
 
       <%= f.field_container :product_label do %>
-        <%= f.label :product_label, Spree.t(:product_label) %><br />
+        <%= f.label :product_label, Spree.t(:product_label, scope: :blog) %><br />
         <%= f.text_field :product_label, :class => "fullwidth" %>
         <%= f.error_message_on :product_label %>
       <% end %>

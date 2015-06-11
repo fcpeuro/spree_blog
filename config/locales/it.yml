@@ -1,5 +1,37 @@
 it:
   spree:
     blog:
-      listing_posts: "Lista Posts"
-      new_post:      "Nuovo Post"
+      abstract: Abstract
+      author: Author
+      back_to_category_list: Back To Category List
+      back_to_post_list: Back To Post List
+      back_to_tag_list: Back To Tag List
+      body: Body
+      category: Category
+      description: Description
+      editing_category: Editing Category
+      editing_post: Editing Post
+      editing_tag: Editing Tag
+      featured_image: Featured Image
+      listing_categories: Categories
+      listing_posts: Lista Posts 
+      listing_tags: Tags
+      name: Name
+      new_category: New Category
+      new_post: Nuovo Post
+      new_tag: New Tag
+      permalink: Permalink
+      product_label: Product Label
+      published_at: Published At
+      related_posts: Related posts
+      seo_description: SEO Description
+      seo_title: SEO Title
+      sticky: Sticky
+      tags: Tags
+      title: Title
+      trending: Trending
+      variant_sku: Variant SKU 
+      visible: Visible
+    blog_errors:
+      requires_featured_image: "richiede la presenza di una featured image"
+      requires_product_label: "il prodotto associato richiede la presenza di un'etichetta"

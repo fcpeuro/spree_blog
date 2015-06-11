@@ -1,10 +1,10 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:listing_tags) %>
+  <%= Spree.t(:listing_tags, scope: :blog) %>
 <% end %>
 
 <% content_for :page_actions do %>
   <li id="new_tag_link">
-    <%= button_link_to Spree.t(:new_tag), new_object_url, { :remote => true, :icon => 'icon-plus', :id => 'admin_new_tag' } %>
+    <%= button_link_to Spree.t(:new_tag, scope: :blog), new_object_url, { :remote => true, :icon => 'icon-plus', :id => 'admin_new_tag' } %>
   </li>
 <% end if can?(:create, Spree::Tag) %>
 
@@ -22,9 +22,9 @@
   </colgroup>
   <thead>
     <tr id="admin_tags_index_headers">
-      <th><%= Spree.t(:name) %></th>
-      <th><%= Spree.t(:permalink) %></th>
-      <th><%= Spree.t(:trending) %></th>
+      <th><%= Spree.t(:name, scope: :blog) %></th>
+      <th><%= Spree.t(:permalink, scope: :blog) %></th>
+      <th><%= Spree.t(:trending, scope: :blog) %></th>
     </tr>
   </thead>
   <tbody>

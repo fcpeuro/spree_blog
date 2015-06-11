@@ -78,13 +78,13 @@ module Spree
 
     def check_presence_of_featured_image_if_sticky
       if self.sticky && !self.featured_image.present?
-        errors.add(:sticky, "richiede la presenza di una featured image")
+        errors.add(:sticky, Spree.t(:requires_featured_image, scope: :blog_errors))
       end
     end
 
     def check_presence_of_label_if_product_associated
       if self.variant.present? && self.product_label.blank?
-        errors.add(:product_label, "il prodotto associato richiede la presenza di un'etichetta")
+        errors.add(:product_label, Spree.t(:product_label_is_required, scope: :blog_errors))
       end
     end
 
