@@ -62,6 +62,14 @@ module Spree
       self.tag_ids = ids
     end
 
+    def variant_sku
+      self.variant.try(:sku)
+    end
+
+    def variant_sku=(sku)
+      self.variant = Variant.find_by(sku: sku)
+    end
+
     def to_param
       self.permalink.presence || self.title.to_s.to_url
     end

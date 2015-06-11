@@ -70,10 +70,10 @@
       <%= f.hidden_field :related_post_ids, :value => @post.related_post_ids.join(",") %>
     <% end %>
 
-    <%= f.field_container :variant_id do %>
-      <%= f.label :variant_id, Spree.t(:variant) %>
-      <%= f.text_field(:variant_id, options_for_select(@variants.map { |v| ["#{v.name} #{v.options_text}", v.id] }, @object.variant_id), {include_blank: Spree.t('match_choices.none')}, {class: 'select2'}) %>
-      <%= f.error_message_on :variant %>
+    <%= f.field_container :variant_sku do %>
+      <%= f.label :variant_sku, Spree.t(:variant_sku) %>
+      <%= f.text_field(:variant_sku) %>
+      <%= f.error_message_on :variant_sku %>
     <% end %>
 
     <%= f.field_container :product_label do %>
