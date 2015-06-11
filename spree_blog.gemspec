@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_blog'
-  s.version     = '2.0.6'
+  s.version     = '2.4.0'
   s.summary     = 'Add blogging functionality to spree'
   s.description = 'Add blogging functionality to spree'
   s.required_ruby_version = '>= 1.9.3'
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 2.4.0'
-  s.add_dependency 'spree_editor'
+  s.add_dependency 'spree_editor', '~> 2.2.0'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'

@@ -9,14 +9,17 @@ Installation
 Add spree_blog to your Gemfile:
 
 ```ruby
-gem 'spree_blog'
+gem 'spree_blog', github: 'romul/spree_blog', branch: '2-4-stable'
+gem 'spree_editor', github: 'spree-contrib/spree_editor', branch: '2-4-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
 
 ```shell
-bundle
-bundle exec rails g spree_blog:install
+bundle install
+rails g spree_editor:install
+rails g ckeditor:install --orm=active_record --backend=paperclip && bundle exec rake db:migrate
+rails g spree_blog:install
 ```
 
 Testing
