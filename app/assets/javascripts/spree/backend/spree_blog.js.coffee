@@ -10,12 +10,13 @@ $ ->
         url: Spree.routes.posts_search
         datatype: 'json'
         data: (term, page) ->
+          token: Spree.api_key
           per_page: 50
           page: page
           q:
             title_cont: term
         results: (data, page) ->
-          results: data['posts']
+          results: data['spree_posts']
       formatResult: (post) -> post.title
       formatSelection: (post) -> post.title
       initSelection: (element, callback) ->
@@ -33,6 +34,7 @@ $ ->
         url: Spree.routes.tags_search
         datatype: 'json'
         data: (term, page) ->
+          token: Spree.api_key
           per_page: 50
           page: page
           q:

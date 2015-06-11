@@ -2,7 +2,7 @@
 <h3>Abstract</h3>
 <p><%= @object.abstract %></p>
 <h3>Body</h3>
-<p><%= @object.body %></p>
+<div><%== @object.body %></div>
 <h3>Author</h3>
 <p><%= link_to @object.author.full_name, blog_content_path(@object.author) %></p>
 <h3>Category</h3>

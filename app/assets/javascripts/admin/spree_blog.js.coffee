@@ -17,7 +17,10 @@ $ ->
       formatResult: (post) -> post.title
       formatSelection: (post) -> post.title
       initSelection: (element, callback) ->
-        url = Spree.url Spree.routes.posts_search, ids: element.val()
+        url = Spree.url Spree.routes.posts_search, {
+          ids: element.val(),
+          token: Spree.api_key
+        }
         $.getJSON url, null, (data) ->
           callback(data['posts'])
 
@@ -28,7 +31,7 @@ $ ->
       placeholder: 'Tags'
       multiple: true
       ajax:
-        url: Spree.routes.tags_search
+        url: Spree.routes.tags_search, { token: Spree.api_key }
         datatype: 'json'
         data: (term, page) ->
           per_page: 50
