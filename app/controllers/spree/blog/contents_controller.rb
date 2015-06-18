@@ -2,7 +2,7 @@ module Spree
   module Blog
     class ContentsController < BaseController
       include Spree::Core::ControllerHelpers::Order
-      layout 'spree/layouts/spree_blog'
+      layout SpreeBlog::Config[:layout]
 
       before_filter :load_blog_data
 

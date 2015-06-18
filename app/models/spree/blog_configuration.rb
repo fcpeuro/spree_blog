@@ -6,6 +6,7 @@ class Spree::BlogConfiguration < Spree::Preferences::Configuration
   preference :blog_default_style, :string, :default => 'blog'
 
   preference :posts_per_page, :integer, :default => 5
+  preference :layout, :string, :default => 'spree/layouts/spree_application'
 
   def searcher_class
     @searcher_class ||= SpreeBlog::Core::Search::Base
