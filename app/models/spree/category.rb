@@ -1,5 +1,6 @@
 module Spree
   class Category < ActiveRecord::Base
+    acts_as_nested_set
     has_many :posts, ->{ order(published_at: :desc) }, inverse_of: :category
 
     validates :name, :permalink, presence: true
