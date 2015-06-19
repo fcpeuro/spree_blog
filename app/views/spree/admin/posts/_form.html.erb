@@ -25,10 +25,9 @@
         <%= f.collection_select(:author_id, @authors, :id, :full_name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2 fullwidth' }) %>
         <%= f.error_message_on :author %>
       <% end %>
-      <%= f.field_container :category_id do %>
-        <%= f.label :category_id, Spree.t(:category, scope: :blog) %><br />
-        <%= f.collection_select(:category_id, @categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2 fullwidth' }) %>
-        <%= f.error_message_on :category %>
+      <%= f.field_container :category_ids do %>
+        <%= f.label :category_ids, Spree.t(:categories, scope: :blog) %>
+        <%= f.hidden_field :category_ids, :value => @post.category_ids.join(","), :class => "fullwidth" %>
       <% end %>
       <%= f.field_container :seo_description do %>
         <%= f.label :seo_scription, Spree.t(:seo_description, scope: :blog) %><br />

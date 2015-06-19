@@ -6,6 +6,7 @@ Spree::Core::Engine.routes.draw do
   end
 
   namespace :api do
+    resources :categories
     resources :posts
     resources :tags
   end

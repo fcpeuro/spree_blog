@@ -26,6 +26,9 @@ module Spree
         if params[:post][:related_post_ids]
           params[:post][:related_post_ids] = params[:post][:related_post_ids].split(',')
         end
+        if params[:post][:category_ids]
+          params[:post][:category_ids] = params[:post][:category_ids].split(',')
+        end
       end
 
     end
