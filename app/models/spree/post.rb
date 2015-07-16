@@ -1,6 +1,6 @@
 module Spree
   class Post < ActiveRecord::Base
-    belongs_to :category, inverse_of: :posts
+    #belongs_to :category, inverse_of: :posts
     belongs_to :author,   inverse_of: :posts
     belongs_to :variant
 
@@ -11,7 +11,7 @@ module Spree
     has_many :post_categories, inverse_of: :post
     has_many :categories, through: :post_categories, source: :category 
 
-    validates :title, :body, :category, :author, :published_at, presence: true
+    validates :title, :body, :author, :published_at, presence: true
     validate :check_presence_of_featured_image_if_sticky
 
     validate :check_presence_of_label_if_product_associated
