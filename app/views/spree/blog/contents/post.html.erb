@@ -5,8 +5,10 @@
 <div><%== @object.body %></div>
 <h3>Author</h3>
 <p><%= link_to @object.author.full_name, blog_content_path(@object.author) %></p>
-<h3>Category</h3>
-<p><%= link_to @object.category.name, blog_content_path(@object.category) %></p>
+<h3>Categories</h3>
+<% @object.categories.each do |category| -%>
+  <p><%= link_to category.name, blog_content_path(category) %></p>
+<%- end -%>
 <h3>Tags</h3>
 <p>
   <% @object.tags.each do |tag| %>
