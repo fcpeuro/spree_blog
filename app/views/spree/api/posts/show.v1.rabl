@@ -4,7 +4,7 @@ child :author => :author do
   attributes *author_attributes
 end
 
-child :category => :category do
+child :categories do
   attributes *category_attributes
 end
 

@@ -33,7 +33,9 @@ module Spree
 
     validates_attachment :featured_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-    make_permalink order: :published_at, field: :permalink
+    friendly_id :title, use: :slugged, slug_column: :permalink
+    before_validation :normalize_permalink, on: [:create, :update]
+    validates :permalink, length: { minimum: 3 }, uniqueness: { allow_blank: true }
 
     def permalink_or_title
       self.permalink.presence || title
@@ -98,5 +100,8 @@ module Spree
       }.inject(:or)
     end
 
+    def normalize_permalink
+      self.permalink = normalize_friendly_id(permalink)
+    end
   end
 end
