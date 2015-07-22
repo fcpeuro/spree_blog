@@ -6,14 +6,11 @@ module Spree
     validates :permalink, :uniqueness => true
     scope :sorted_alphabetically, -> { order('first_name, last_name') }
 
-    make_permalink order: :first_name, field: :permalink
+    include HasPermalink
+    friendly_id :full_name, use: :slugged, slug_column: :permalink
 
     def full_name
       [ first_name, last_name ].join(" ")
-    end
-
-    def to_param
-      self.permalink.presence || self.full_name.to_s.to_url
     end
 
     def seo_slug
@@ -22,6 +19,10 @@ module Spree
 
     def seo_title
       self.full_name.to_s
+    end
+
+    def should_generate_new_friendly_id?
+      permalink.blank?
     end
   end
 end

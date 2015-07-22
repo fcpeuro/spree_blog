@@ -33,9 +33,8 @@ module Spree
 
     validates_attachment :featured_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
+    include HasPermalink
     friendly_id :title, use: :slugged, slug_column: :permalink
-    before_validation :normalize_permalink, on: [:create, :update]
-    validates :permalink, length: { minimum: 3 }, uniqueness: { allow_blank: true }
 
     def permalink_or_title
       self.permalink.presence || title
@@ -74,10 +73,6 @@ module Spree
       self.variant = Variant.find_by(sku: sku)
     end
 
-    def to_param
-      self.permalink.presence || self.title.to_s.to_url
-    end
-
     private
 
     def check_presence_of_featured_image_if_sticky
@@ -100,8 +95,8 @@ module Spree
       }.inject(:or)
     end
 
-    def normalize_permalink
-      self.permalink = normalize_friendly_id(permalink)
+    def should_generate_new_friendly_id?
+      permalink.blank?
     end
   end
 end

@@ -9,11 +9,8 @@ module Spree
 
     scope :sorted_alphabetically, -> { order(:name) }
 
-    make_permalink order: :name, field: :permalink
-
-    def to_param
-      self.permalink.presence || self.name.to_s.to_url
-    end
+    include HasPermalink
+    friendly_id :name, use: :slugged, slug_column: :permalink
 
     def seo_slug
       self.permalink
@@ -25,6 +22,10 @@ module Spree
 
     def seo_description
       self.description
+    end
+
+    def should_generate_new_friendly_id?
+      permalink.blank?
     end
   end
 end

@@ -6,7 +6,8 @@ module Spree
     validates :name, :permalink, presence: true
     validates :name, :permalink, uniqueness: { case_sensitive: false }
 
-    make_permalink order: :created_at, field: :permalink
+    include HasPermalink
+    friendly_id :name, use: :slugged, slug_column: :permalink
 
     def self.find_or_create!(tag_name)
       Tag.where(name: tag_name).first_or_create
@@ -18,10 +19,6 @@ module Spree
     scope :by_usage, -> { with_posts.select('COUNT(blog_tags.id) AS posts_count').order('posts_count DESC') }
     scope :non_trending, -> { where(trending: false) }
 
-    def to_param
-      self.permalink.presence || self.name.to_s.to_url
-    end
-
     def seo_slug
       self.permalink
     end
@@ -32,6 +29,10 @@ module Spree
 
     def seo_description
       self.description
+    end
+
+    def should_generate_new_friendly_id?
+      permalink.blank?
     end
   end
 end
