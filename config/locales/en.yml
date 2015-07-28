@@ -35,3 +35,4 @@ en:
     blog_errors:
       requires_featured_image: "requires featured image"
       product_label_is_required: "is required by the associated variant"
+    blog_settings: "Blog Settings"

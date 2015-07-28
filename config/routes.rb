@@ -16,5 +16,6 @@ Spree::Core::Engine.routes.draw do
     resources :categories
     resources :posts
     resources :tags
+    resource :blog_settings
   end
 end

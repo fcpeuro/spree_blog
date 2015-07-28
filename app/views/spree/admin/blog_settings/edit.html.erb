@@ -1,0 +1,33 @@
+<%= render :partial => 'spree/admin/shared/post_sub_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:blog_settings) %>
+<% end %>
+
+<%= form_tag admin_blog_settings_path, method: :put do %>
+  <div id="preferences" data-hook>
+    <fieldset class="blog no-border-top">
+      <div class="row">
+        <div class="alpha six columns">
+          <fieldset class="no-border-top no-border-bottom">
+            <% @preferences.each do |key|
+                type = SpreeBlog::Config.preference_type(key) %>
+                <div class="field">
+                  <%= label_tag(key, Spree.t(key)) + tag(:br) if type != :boolean %>
+                  <%= preference_field_tag(key, SpreeBlog::Config[key], :type => type) %>
+                  <%= label_tag(key, Spree.t(key)) + tag(:br) if type == :boolean %>
+                </div>
+            <% end %>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'refresh' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), edit_admin_blog_settings_path, :class => 'button' %>
+      </div>
+
+    </fieldset>
+  </div>
+<% end %>
