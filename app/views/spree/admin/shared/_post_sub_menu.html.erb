@@ -4,6 +4,8 @@
     <%= tab :categories, :match_path => '/categories' %>
     <%= tab :tags,       :match_path => '/tags' %>
     <%= tab :authors,    :match_path => '/authors' %>
-    <%= tab :blog_settings, :match_path => '/blog_settings', :url => edit_admin_blog_settings_path %>
+    <% if can?(:manage, :blog_settings) %>
+      <%= tab :blog_settings, :match_path => '/blog_settings', :url => edit_admin_blog_settings_path %>
+    <% end %>
   </ul>
 <% end %>

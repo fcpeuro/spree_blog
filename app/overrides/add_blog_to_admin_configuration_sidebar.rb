@@ -9,6 +9,6 @@ Deface::Override.new(
   virtual_path:  "spree/admin/shared/_menu",
   name: "blog_admin_menu",
   insert_bottom: 'ul[data-hook="admin_tabs"]',
-  text: "<%= tab :posts, :categories, :tags, :authors, url: spree.admin_posts_path, icon: 'pencil' %>",
+  text: "<%= tab :posts, :categories, :tags, :authors, :blog_settings, url: spree.admin_posts_path, icon: 'pencil' %>",
   disabled: false
 )
