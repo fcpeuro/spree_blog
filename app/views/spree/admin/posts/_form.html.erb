@@ -52,8 +52,8 @@
     <div class="alpha four columns">
       <%= f.field_container :published_at do %>
         <%= f.label :published_at, Spree.t(:published_at, scope: :blog) %>
-        <%= f.error_message_on :published_at %>
-        <%= f.text_field :published_at, :value => datepicker_field_value(@post.published_at), :class => 'datepicker' %>
+        <%= f.error_message_on :published_at %><br />
+        <%= f.datetime_select :published_at, :class => 'datetimepicker' %>
       <% end %>
       <%= f.field_container :visible do %>
         <%= f.check_box(:visible) %>
