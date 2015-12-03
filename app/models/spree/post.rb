@@ -10,6 +10,7 @@ module Spree
     has_many :related_posts, -> { order(published_at: :desc) }, through: :post_relations, source: :related
     has_many :post_categories, inverse_of: :post
     has_many :categories, through: :post_categories, source: :category 
+    has_many :comments, -> { where(parent_id: nil).order(:created_at) }, class_name: Spree::BlogComment
 
     validates :title, :body, :author, :published_at, presence: true
     validate :check_presence_of_featured_image_if_sticky
