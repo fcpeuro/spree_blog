@@ -22,6 +22,10 @@ module Spree
         Post.find_by_permalink!(params[:id])
       end
 
+      def collection
+        Post.order('published_at desc')
+      end
+
       def convert_related_post_ids
         if params[:post][:related_post_ids]
           params[:post][:related_post_ids] = params[:post][:related_post_ids].split(',')

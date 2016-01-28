@@ -15,9 +15,10 @@
 <% if @collection.any? %>
 <table class="index sortable" id="listing_posts">
   <colgroup>
-    <col style="width: 55%">
-    <col style="width: 30%;">
+    <col style="width: 50%">
+    <col style="width: 20%;">
     <col style="width: 5%;">
+    <col style="width: 15%;">
     <col style="width: 10%;">
   </colgroup>
   <thead>
@@ -25,6 +26,7 @@
       <th><%= Spree.t(:title, scope: :blog) %></th>
       <th><%= Spree.t(:author, scope: :blog) %></th>
       <th><%= Spree.t(:visible, scope: :blog) %></th>
+      <th><%= Spree.t(:published_at, scope: :blog) %></th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +35,7 @@
         <td class="align-center"><%= post.title %></td>
         <td class="align-center"><%= post.author.full_name %></td>
         <td class="align-center"><%= post.visible ? Spree.t(:yes) : "" %></td>
+        <td class="align-center"><%= l post.published_at.to_date %></td>
         <td class="actions" data-hook="admin_posts_index_row_actions">
           <%= link_to_edit post, :no_text => true, :class => 'edit' if can?(:edit, post) %>
           &nbsp;
