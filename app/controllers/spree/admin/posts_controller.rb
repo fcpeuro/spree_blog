@@ -23,7 +23,7 @@ module Spree
       end
 
       def collection
-        Post.order('published_at desc')
+        Post.order('published_at desc').page(params[:page] || 1).per(params[:per_page] || 30)
       end
 
       def convert_related_post_ids
